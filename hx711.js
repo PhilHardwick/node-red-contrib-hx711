@@ -7,6 +7,7 @@ module.exports = function(RED) {
   function hx711(n) {
     //init
     RED.nodes.createNode(this,n);
+    this.log("Node created");
 
     //properties
     this.name = n.name;
@@ -14,6 +15,7 @@ module.exports = function(RED) {
     this.dataPin = parseInt(n.dataPin);
     this.clockPin = parseInt(n.clockPin);
     this.interval = n.interval;
+    this.log("Conifg parsed");
     if(parseInt(this.platform) == 512) {
       var file;
       try {
@@ -32,9 +34,12 @@ module.exports = function(RED) {
         }
       }
     }
+    this.log("Got device");
     this.sensor = new hx711.HX711(this.dataPin, this.clockPin);
+    this.log("Created scale");
     this.sensor.setScale(this.scale);
     this.sensor.tare();
+    this.log("Configured and zeroed scale");
     this.status({});
 
     var node = this;
@@ -42,6 +47,7 @@ module.exports = function(RED) {
     var msg = { topic: node.name + '/A' + node.dataPin + '/A' + node.clockPin };
 
     //poll reading at interval
+    this.log("Set to send message every " + this.interval);
     this.timer = setInterval(function() {
       msg.payload = node.sensor.readUnits(10);
       node.send(msg);
@@ -52,5 +58,6 @@ module.exports = function(RED) {
       clearInterval(node.timer);
     });
   }
+  this.log("Registering node");
   RED.nodes.registerType('upm-hx711', hx711);
 };
