@@ -4,6 +4,13 @@
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
     <div class="form-row">
+        <label for="node-input-platform"><i class="fa fa fa-wrench"></i> Platform</label>
+        <select type="text" id="node-input-platform">
+            <option value="0" selected="selected">Native</option>
+            <option value="512">Firmata</option>
+        </select>
+    </div>
+    <div class="form-row">
         <label for="node-input-scale"><i class="fa fa-tag"></i> Scale</label>
         <input type="text" id="node-input-scale" placeholder="100.0">
     </div>
@@ -70,6 +77,9 @@
     defaults: {
       name: {
         value: ''
+      },
+      platform: {
+        value: '0'
       },
       scale: {
         value: '92.0'

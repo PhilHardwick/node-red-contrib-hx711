@@ -14,9 +14,10 @@ module.exports = function(RED) {
     this.scale = parseFloat(n.scale);
     this.dataPin = parseInt(n.dataPin);
     this.clockPin = parseInt(n.clockPin);
+    this.platform = parseInt(n.platform);
     this.interval = n.interval;
     RED.log.info("Conifg parsed " + this.clockPin + " " + this.dataPin);
-    if(parseInt(this.platform) == 512) {
+    if(this.platform === 512) {
       var file;
       try {
         file = fs.readFileSync('/tmp/imraa.lock', 'utf8');
