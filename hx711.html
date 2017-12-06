@@ -1,0 +1,97 @@
+<script type="text/x-red" data-template-name="upm-hx711">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-scale"><i class="fa fa-tag"></i> Scale</label>
+        <input type="text" id="node-input-scale" placeholder="100.0">
+    </div>
+    <div class="form-row">
+        <label for="node-input-dataPin"><i class="fa fa-map-pin"></i> Data Pin</label>
+        <select type="text" id="node-input-dataPin">
+            <option value="0" selected="selected">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-clickPin"><i class="fa fa-map-pin"></i> Clock Pin</label>
+        <select type="text" id="node-input-clockPin">
+            <option value="0" selected="selected">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-interval"><i class="fa fa-refresh"></i> Interval (ms)</label>
+        <input type="text" id="node-input-interval" placeholder="1000">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="upm-hx711">
+    <h2>HX711 Sensor</h2>
+    <br>
+    <p>This node outputs readings from a scale.</p>
+    <br>
+    <!--<p>Learn More:-->
+        <!--<a href="https://software.intel.com/en-us/iot/hardware/sensors/grove-rotary-angle-sensor" target="_blank">Grove Rotary Sensor</a>-->
+    <!--</p>-->
+    <!--<br>-->
+    <!--<img src="https://raw.githubusercontent.com/intel-iot-devkit/upm/master/docs/images/groverotary.jpeg" />-->
+</script>
+
+
+<script type="text/javascript">
+  RED.nodes.registerType('upm-hx711', {
+    category: 'UPM Sensors',
+    defaults: {
+      name: {
+        value: ''
+      },
+      scale: {
+        value: '92.0'
+      },
+      dataPin:  {
+        value: '3',
+        required: true,
+        validate:RED.validators.number()
+      },
+      clockPin:  {
+        value: '2',
+        required: true,
+        validate:RED.validators.number()
+      }
+    },
+    color: '#a6bbcf',
+    paletteLabel: 'HX711',
+    inputs: 0,
+    outputs: 1,
+    icon: 'arrow-in.png',
+    label: function(){
+      return this.name || 'HX711';
+    }
+  });
+</script>
