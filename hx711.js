@@ -36,7 +36,7 @@ module.exports = function(RED) {
       }
     }
     RED.log.info("Got device");
-    this.sensor = new hx711.HX711(this.dataPin, this.clockPin, 128);
+    this.sensor = new hx711.HX711(this.dataPin + this.platform, this.clockPin + this.platform, 128);
     RED.log.info("Created scale");
     this.sensor.setScale(this.scale);
     this.sensor.tare();
