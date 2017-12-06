@@ -39,7 +39,7 @@ module.exports = function(RED) {
     var dataPinAndPlatform = this.dataPin + this.platform;
     var clockPinAndPlatform = this.clockPin + this.platform;
     RED.log.info(dataPinAndPlatform + " " + clockPinAndPlatform);
-    this.sensor = new hx711.HX711(dataPinAndPlatform, clockPinAndPlatform, 128);
+    this.sensor = new hx711.HX711(515, 514, 128);
     RED.log.info("Created scale");
     this.sensor.setScale(this.scale);
     this.sensor.tare();
