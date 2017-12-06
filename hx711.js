@@ -4,7 +4,7 @@ module.exports = function(RED) {
   var fs = require('fs');
   var hx711 = require('jsupm_hx711');
 
-  function hx711(n) {
+  function upm_hx711(n) {
     //init
     RED.nodes.createNode(this,n);
     this.log("Node created");
@@ -59,5 +59,5 @@ module.exports = function(RED) {
     });
   }
   this.log("Registering node");
-  RED.nodes.registerType('upm-hx711', hx711);
+  RED.nodes.registerType('upm-hx711', upm_hx711);
 };
